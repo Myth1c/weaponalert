@@ -1,3 +1,15 @@
+--[[
+
+	Weapon Alert v 1.0
+	Created by Mythic 
+	https://steamcommunity.com/id/MythicalMythic/
+
+	Use: Displays if the user is holding a weapon with an icon above their head as well as has multiple icons for more info on what type of item is being held.
+	Problems: Due to client lag, sometimes a check in the think function will pass then fail immediately after when the player dies.
+	IE: Tick 1 - if statement passes. Player is valid. Tick 10 - Grab what weapon the player is holding. If the player dies between tick 1 and 10, the addon will return an error inside pcall.
+]]--
+
+
 if SERVER then
 
 	AddCSLuaFile("init_weaponalert.lua")
