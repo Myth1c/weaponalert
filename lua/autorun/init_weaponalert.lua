@@ -7,6 +7,9 @@
 	Use: Displays if the user is holding a weapon with an icon above their head as well as has multiple icons for more info on what type of item is being held.
 	Problems: Due to client lag, sometimes a check in the think function will pass then fail immediately after when the player dies.
 	IE: Tick 1 - if statement passes. Player is valid. Tick 10 - Grab what weapon the player is holding. If the player dies between tick 1 and 10, the addon will return an error inside pcall.
+
+	TODO: Add better debug code. 
+	TODO: Separate a lot of things into their own separate methods so the same code isn't being run 8 times one after another.
 ]]--
 
 
@@ -18,6 +21,9 @@ end
 
 if CLIENT then
 
+	--[[
+		TODO: Add better icons. The icons currently used are fine but they're not pretty.
+	]]--
 	armedWarningMat = Material("fadmin/icons/weapon")
 	handcuffWarningMat = Material("fadmin/icons/jail")
 	stunWarningMat = Material("hud/avatar_glow_64")
@@ -66,7 +72,10 @@ if CLIENT then
 
 	
 
-
+	--[[
+		TODO: Update think function so it doesn't go through 4 checks for each weapon type. Optimization would be key.
+		Current functionality is it goes through and checks every weapon on every table. Ideally, you'd check the small tables first then the larger tables as well as not check the other tables if a table is true.
+	]]--
 	local function ArmedPlayersCheckThink()
 
 		--print("---checking for armed players...")
@@ -232,6 +241,11 @@ if CLIENT then
 
 
 	end
+
+	--[[
+		TODO: Better optimization down here. 
+		This doesn't look pretty. It's also terribly ineffecient to run 4 seperate loops. A table might work better with the key being the player and the value being the icon to display.
+	]]--
 
 	local function drawWarning()
 
