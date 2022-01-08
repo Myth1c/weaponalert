@@ -13,3 +13,4 @@ Currently, it is not designed to be used on any servers except the one it is dev
 - Allow for user customization on how it appears on their end
 - Allow for server customization of what weapons to check for
 - Allow for server customization of what icons to display for new groups
+- Implement a GUI for adding new weapon categories and what icons to display for them
